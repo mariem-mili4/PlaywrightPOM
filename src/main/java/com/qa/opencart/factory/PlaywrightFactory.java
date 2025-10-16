@@ -15,20 +15,21 @@ public class PlaywrightFactory {
     Page page;
     public Page initBrowser(String browserName) {
         System.out.println(" Browser name is : " + browserName);
+
         playwright = Playwright.create();
 
         switch (browserName.toLowerCase()) {
             case "chromium":
-                playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+                browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
                 break;
             case "firefox":
-                playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false));
+                browser = playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false));
                 break;
             case "webkit":
-                playwright.webkit().launch(new BrowserType.LaunchOptions().setHeadless(false));
+                browser = playwright.webkit().launch(new BrowserType.LaunchOptions().setHeadless(false));
                 break;
             case "chrome":
-                playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(false));
+                browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(false));
                 break;
             default:
                 System.out.println("Browser name is not valid");
@@ -36,8 +37,7 @@ public class PlaywrightFactory {
         }
         browserContext = browser.newContext();
         page = browserContext.newPage();
-        page.navigate("https://www.opencart.com/");
-
+        page.navigate("https://naveenautomationlabs.com/opencart/");
         return page;
 
     }
