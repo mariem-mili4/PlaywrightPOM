@@ -6,15 +6,21 @@ import com.qa.opencart.pages.HomePage;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import java.io.IOException;
+import java.util.Properties;
+
 public class TestBase {
     PlaywrightFactory pf;
     Page page;
+    Properties prop;
+
     protected HomePage homePage;
 
     @BeforeTest
-    public void setup(){
+    public void setup() throws IOException {
         pf = new PlaywrightFactory();
-        page = pf.initBrowser("chromium");
+        prop = pf.initProp();
+        page = pf.initBrowser(prop);
         homePage = new HomePage(page);
     }
 

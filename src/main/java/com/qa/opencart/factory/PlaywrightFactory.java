@@ -19,7 +19,9 @@ public class PlaywrightFactory {
     Page page;
     Properties prop;
 
-    public Page initBrowser(String browserName) {
+    public Page initBrowser(Properties prop) {
+
+        String browserName = prop.getProperty("browser");
         System.out.println(" Browser name is : " + browserName);
 
         playwright = Playwright.create();
@@ -43,7 +45,7 @@ public class PlaywrightFactory {
         }
         browserContext = browser.newContext();
         page = browserContext.newPage();
-        page.navigate("https://naveenautomationlabs.com/opencart/");
+        page.navigate(prop.getProperty("url"));
         return page;
 
     }
