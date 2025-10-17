@@ -6,6 +6,10 @@ import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.Page;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 
 public class PlaywrightFactory {
 
@@ -13,6 +17,8 @@ public class PlaywrightFactory {
     Browser browser;
     BrowserContext browserContext;
     Page page;
+    Properties prop;
+
     public Page initBrowser(String browserName) {
         System.out.println(" Browser name is : " + browserName);
 
@@ -40,5 +46,11 @@ public class PlaywrightFactory {
         page.navigate("https://naveenautomationlabs.com/opencart/");
         return page;
 
+    }
+    public Properties initProp() throws IOException {
+        FileInputStream ip = new FileInputStream("src/main/resources/config/config.properties");
+        prop = new Properties();
+        prop.load(ip);
+        return prop;
     }
 }

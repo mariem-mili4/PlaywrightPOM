@@ -1,10 +1,10 @@
-package com.qa.opencart.factory.pages;
+package com.qa.opencart.pages;
 
 import com.microsoft.playwright.Page;
 
 public class HomePage {
 
-    Page page;
+    private Page page;
     //1. String Locators
     private String search ="input[name='search']";
     private String searchIcon ="div#search button";
